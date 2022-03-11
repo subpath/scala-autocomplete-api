@@ -1,2 +1,7 @@
 *.class
 *.log
+.vscode
+.metals
+.DS_store
+.idea
+.bsp
