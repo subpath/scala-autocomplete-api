@@ -4,7 +4,6 @@ import com.typesafe.scalalogging.StrictLogging
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.expressions.Window
 import org.apache.spark.sql.functions._
-import pb.ProgressBar
 
 import java.io._
 import java.nio.file.{Files, Paths}
@@ -37,8 +36,6 @@ object BuildHashmap extends StrictLogging {
         .mkString
         .split("\n")
         .map(line => line.split("\t")(0))
-    var pb = new ProgressBar(content.length)
-    pb.showSpeed = false
     logger.info("Loading suggestions to HashMap")
     val file = new File("src/main/resources/prepared_hashmap_data.txt")
     val bw = new BufferedWriter(new FileWriter(file))
@@ -46,7 +43,6 @@ object BuildHashmap extends StrictLogging {
       for (idx <- 1 until line.length + 1) {
         bw.write(s"${line.slice(0, idx)}\t$line\n")
       }
-      pb += 1
     }
     bw.close()
 
@@ -83,7 +79,7 @@ object BuildHashmap extends StrictLogging {
 
     val bytes = serialise(suggestions)
     val filename: String = "src/main/resources/hashMapSuggestions.bin"
-    Files.write(Paths.get(filename), bytes.toArray)
+    Files.write(Paths.get(filename), bytes)
   }
 
   def loadHashmapSuggestions(): Map[String, mutable.Seq[String]] = {
