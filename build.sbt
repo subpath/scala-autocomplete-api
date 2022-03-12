@@ -15,5 +15,6 @@ libraryDependencies ++= Seq(
   "org.apache.lucene" % "lucene-suggest" % "8.6.2",
   "com.typesafe.scala-logging" %% "scala-logging" % "3.9.2",
   "org.scala-lang.modules" %% "scala-collection-contrib" % "0.2.2",
+  "org.apache.spark" %% "spark-sql" % "3.2.1",
   "ch.qos.logback" % "logback-classic" % "1.1.3" % Runtime
 )
