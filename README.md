@@ -24,8 +24,9 @@ I wanted to compare endpoints response time of [Lucene's WFST](https://lucene.ap
 ### Comparison results: 
 I run this api locally and tested with [hey](https://github.com/rakyll/hey)
 
-* wfst response time: `0.401s`
-* hashmap response time: `0.362s`
+* wfst response time: `0.0500s`
+* hashmap response time: `0.0457s`
+* for comparison [hashmap-based autocomplete in rust](https://github.com/subpath/rust-autocomplete-api): `0.0185s`
 #### More info
 <details>
   <summary>wfst-based endpoint</summary>
